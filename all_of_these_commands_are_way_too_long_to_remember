@@ -1,3 +1,15 @@
 ### Adjust api scope for a nodepool ###
 
 gcloud container node-pools create adjust-scope-and-size --cluster scope-extension-test-cluster --zone us-west1-a --num-nodes 3 --scopes https://www.googleapis.com/auth/devstorage.read_write,https://www.googleapis.com/auth/pubsub,https://www.googleapis.com/auth/monitoring --machine-type=n1-standard-4
+
+### Switch to a specific gcloud project ###
+gcloud config set project project name
+
+### List projects in organization ###
+gcloud projects list
+
+### List clusters in the project ###
+gcloud beta container clusters list
+
+### Add monitoring api scope to the cluster that previously did not have it ###
+gcloud beta container clusters update scope-extension-test-cluster --monitoring-service=monitoring.googleapis.com --zone=us-west1-a
